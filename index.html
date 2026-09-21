@@ -3,238 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biblioteca de ejercicios</title>
+  <title>Biblioteca de ejercicios | Legends Gym</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
-    }
-    header {
-      background: #111;
-      color: white;
-      padding: 24px 16px;
-      text-align: center;
-      border-bottom: 5px solid #f5c400;
-    }
-    header h1 {
-      margin: 0 0 8px;
-      color: #f5c400;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-    }
-    .controls {
-      width: min(1100px, 94%);
-      margin: 24px auto 10px;
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 12px;
-    }
-    input, select {
-      padding: 14px 12px;
-      border: 1px solid #bbb;
-      border-radius: 8px;
-      font-size: 16px;
-      background: #fff;
-    }
-    #contador {
-      width: min(1100px, 94%);
-      margin: 0 auto 12px;
-      font-weight: bold;
-      color: #333;
-    }
-    #estado {
-      width: min(1100px, 94%);
-      margin: 18px auto;
-      text-align: center;
-      color: #444;
-      font-weight: 600;
-    }
-    #resultados {
-      width: min(1100px, 94%);
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-      padding-bottom: 40px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,.12);
-    }
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: contain;
-      background: #f0f0f0;
-      display: block;
-    }
-    .content {
-      padding: 16px;
-    }
-    .content h2 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      text-transform: capitalize;
-    }
-    .id {
-      color: #666;
-      font-size: 13px;
-      margin-bottom: 12px;
-      word-break: break-all;
-    }
-    .dato {
-      margin: 7px 0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .dato strong {
-      color: #168653;
-    }
-    .botones {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
-    .botones a {
-      flex: 1;
-      min-width: 100px;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    .ver { background: #222; color: white; }
-    .descargar { background: #f5c400; color: #111; }
-    @media (max-width: 650px) {
-      .controls { grid-template-columns: 1fr; }
-    }
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f2f2f2;color:#222}header{background:#111;color:#fff;padding:28px 16px;text-align:center;border-bottom:5px solid #f5c400}header h1{margin:0 0 8px;color:#f5c400;font-size:clamp(1.8rem,4vw,2.8rem)}header p{margin:0;color:#ddd}.controls{width:min(1150px,94%);margin:24px auto 10px;display:grid;grid-template-columns:1fr 200px 180px;gap:12px}input,select{padding:14px 12px;border:1px solid #bbb;border-radius:8px;font-size:16px;background:#fff}#contador{width:min(1150px,94%);margin:0 auto 12px;font-weight:bold;color:#333}#estado{width:min(1150px,94%);margin:18px auto;text-align:center;color:#555;font-weight:600}#resultados{width:min(1150px,94%);margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:20px;padding-bottom:40px}.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px #0000001f}.card img{width:100%;height:220px;object-fit:contain;background:#eee;display:block}.content{padding:16px}.content h2{margin:0 0 7px;font-size:18px}.original{font-size:13px;color:#666;font-style:italic;margin-bottom:10px}.badge{display:inline-block;background:#f5c400;color:#111;border-radius:20px;padding:5px 9px;font-size:12px;font-weight:bold;margin-bottom:8px}.dato{margin:7px 0;font-size:14px;line-height:1.45}.dato strong{color:#168653}.id{color:#777;font-size:12px;word-break:break-all}.botones{display:flex;gap:8px;margin-top:15px}.botones a{flex:1;padding:10px;text-align:center;text-decoration:none;border-radius:7px;font-weight:bold;font-size:13px}.ver{background:#222;color:#fff}.descargar{background:#f5c400;color:#111}@media(max-width:750px){.controls{grid-template-columns:1fr}.botones{flex-direction:column}}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Biblioteca de ejercicios</h1>
-    <p>Busca, visualiza y descarga GIFs de ejercicios</p>
-  </header>
-
-  <section class="controls">
-    <input id="buscador" type="search" placeholder="Buscar: leg extension, leg curl, triceps, pushdown..." />
-    <select id="cantidad">
-      <option value="50">50</option>
-      <option value="100" selected>100</option>
-      <option value="250">250</option>
-      <option value="500">500</option>
-      <option value="1000">1000</option>
-    </select>
-  </section>
-
-  <div id="contador"></div>
-  <div id="estado">Cargando ejercicios...</div>
-  <main id="resultados"></main>
-
+  <header><h1>Biblioteca de ejercicios</h1><p>Legends Gym · Piernas, abdomen y estiramientos</p></header>
+  <section class="controls"><input id="buscador" type="search" placeholder="Buscar en español o inglés..." /><select id="categoria"><option value="">Todas las categorías</option><option>Piernas</option><option>Abdomen</option><option>Estiramientos</option></select><select id="cantidad"><option value="50">50 ejercicios</option><option value="100" selected>100 ejercicios</option><option value="250">250 ejercicios</option></select></section>
+  <div id="contador"></div><div id="estado">Cargando ejercicios...</div><main id="resultados"></main>
   <script>
-    const JSON_URL = "https://raw.githubusercontent.com/mohamedatef90/exercise-library/main/exercises.json";
-    const GIF_URL = "https://raw.githubusercontent.com/mohamedatef90/exercise-library/main/gifs/";
-    let ejercicios = [];
-
-    const buscador = document.getElementById("buscador");
-    const cantidad = document.getElementById("cantidad");
-    const resultados = document.getElementById("resultados");
-    const contador = document.getElementById("contador");
-    const estado = document.getElementById("estado");
-
-    function escaparHTML(valor) {
-      return String(valor ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    const GIF_URL="https://raw.githubusercontent.com/mohamedatef90/exercise-library/main/gifs/";
+    let ejercicios=[];
+    const $=id=>document.getElementById(id);
+    function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+    function lista(v){return Array.isArray(v)&&v.length?v.join(", "):"No especificado"}
+    function mostrar(){
+      const q=$("buscador").value.trim().toLowerCase(), cat=$("categoria").value, limite=Number($("cantidad").value);
+      const filtrados=ejercicios.filter(e=>{const texto=[e.name,e.originalName,e.id,e.category,...(e.equipment||[]),...(e.targetMuscles||[]),...(e.secondaryMuscles||[])].join(" ").toLowerCase();return (!q||texto.includes(q))&&(!cat||e.category===cat)});
+      const visibles=filtrados.slice(0,limite); $("contador").textContent=`Encontrados: ${filtrados.length} | Mostrando: ${visibles.length}`;
+      $("estado").textContent=visibles.length?"":"No se encontraron ejercicios.";
+      $("resultados").innerHTML=visibles.map(e=>{const url=GIF_URL+encodeURIComponent(e.gif);return `<article class="card"><img src="${url}" loading="lazy" alt="${esc(e.name)}"><div class="content"><span class="badge">${esc(e.category)}</span><h2>${esc(e.name)}</h2><div class="original">Nombre original: ${esc(e.originalName)}</div><div class="dato"><strong>Equipo:</strong> ${esc(lista(e.equipment))}</div><div class="dato"><strong>Músculos principales:</strong> ${esc(lista(e.targetMuscles))}</div><div class="dato"><strong>Músculos secundarios:</strong> ${esc(lista(e.secondaryMuscles))}</div><div class="dato"><strong>ID:</strong> <span class="id">${esc(e.id)}</span></div><div class="botones"><a class="ver" href="${url}" target="_blank" rel="noopener">Ver GIF</a><a class="descargar" href="${url}" download="${esc(e.gif)}" target="_blank" rel="noopener">Descargar</a></div></div></article>`}).join("");
     }
-
-    function aTexto(lista) {
-      if (!Array.isArray(lista) || lista.length === 0) return "No especificado";
-      return lista.join(", ");
-    }
-
-    function mostrarEjercicios() {
-      const texto = buscador.value.trim().toLowerCase();
-      const limite = Number(cantidad.value);
-
-      const filtrados = ejercicios.filter((ejercicio) => {
-        const contenido = [
-          ejercicio.name,
-          ejercicio.id,
-          ...(ejercicio.equipment || []),
-          ...(ejercicio.targetMuscles || []),
-          ...(ejercicio.secondaryMuscles || []),
-          ...(ejercicio.bodyParts || [])
-        ].join(" ").toLowerCase();
-
-        return contenido.includes(texto);
-      });
-
-      const visibles = filtrados.slice(0, limite);
-
-      contador.textContent = `Encontrados: ${filtrados.length} | Mostrando: ${visibles.length}`;
-
-      if (visibles.length === 0) {
-        resultados.innerHTML = "";
-        estado.textContent = "No se encontraron ejercicios.";
-        return;
-      }
-
-      estado.textContent = "";
-
-      resultados.innerHTML = visibles.map((ejercicio) => {
-        const nombre = escaparHTML(ejercicio.name);
-        const id = escaparHTML(ejercicio.id);
-        const gif = escaparHTML(ejercicio.gif);
-        const enlaceGIF = GIF_URL + encodeURIComponent(ejercicio.gif);
-
-        return `
-          <article class="card">
-            <img src="${enlaceGIF}" loading="lazy" alt="${nombre}" />
-            <div class="content">
-              <h2>${nombre}</h2>
-              <div class="id">ID: ${id}<br>GIF: ${gif}</div>
-              <div class="dato"><strong>Equipo:</strong> ${escaparHTML(aTexto(ejercicio.equipment))}</div>
-              <div class="dato"><strong>Músculos principales:</strong> ${escaparHTML(aTexto(ejercicio.targetMuscles))}</div>
-              <div class="dato"><strong>Músculos secundarios:</strong> ${escaparHTML(aTexto(ejercicio.secondaryMuscles))}</div>
-              <div class="dato"><strong>Zona corporal:</strong> ${escaparHTML(aTexto(ejercicio.bodyParts))}</div>
-              <div class="botones">
-                <a class="ver" href="${enlaceGIF}" target="_blank" rel="noopener">Ver GIF</a>
-                <a class="descargar" href="${enlaceGIF}" download="${gif}" target="_blank" rel="noopener">Descargar</a>
-              </div>
-            </div>
-          </article>
-        `;
-      }).join("");
-    }
-
-    async function cargarEjercicios() {
-      try {
-        const respuesta = await fetch(JSON_URL);
-        if (!respuesta.ok) throw new Error("No se pudo cargar exercises.json");
-
-        ejercicios = await respuesta.json();
-        mostrarEjercicios();
-      } catch (error) {
-        console.error(error);
-        estado.textContent = "No se pudo cargar la biblioteca. Verifica que la conexión a internet funcione y que la URL sea correcta.";
-      }
-    }
-
-    buscador.addEventListener("input", mostrarEjercicios);
-    cantidad.addEventListener("change", mostrarEjercicios);
-
-    cargarEjercicios();
+    async function cargar(){try{const r=await fetch("./ejercicios.json");if(!r.ok)throw Error("No se pudo cargar ejercicios.json");ejercicios=await r.json();mostrar()}catch(err){console.error(err);$("estado").textContent="No se pudo cargar la lista de ejercicios."}}
+    ["buscador","categoria","cantidad"].forEach(id=>$(id).addEventListener(id==="buscador"?"input":"change",mostrar)); cargar();
   </script>
 </body>
 </html>
